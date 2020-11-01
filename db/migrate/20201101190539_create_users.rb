@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :preferred_name
       t.string :image_url
       t.text :bio
+
+      t.timestamps null: false
     end
   end
 end
