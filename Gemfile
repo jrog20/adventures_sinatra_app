@@ -10,7 +10,10 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
-gem 'tux'
+
+group :development do
+  gem 'tux'
+end
 
 group :test do
   gem 'rspec'
