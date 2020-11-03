@@ -1,1 +1,15 @@
-<h1>This is the show page</h1>
+<h1>Welcome, <%= current_user.preferred_name %>.</h1>
+<img src="<%= current_user.image_url %>" width="200" height="200">
+<p><%= current_user.bio %></p>
+
+<h2>Here are your adventures:</h2>
+# add in css grid for each adventure
+<% current_user.adventures.each do |adventure| %>
+  <img src="<%= adventure.image_url %>" width="200" height="200">
+  <%= adventure.date %>
+  <%= adventure.city %>, <%= adventure.country %>
+<% end %>
+
+<h3>Post an adventure:</h3>
+Add link to 
+
