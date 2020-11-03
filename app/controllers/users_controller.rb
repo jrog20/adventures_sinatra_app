@@ -1,22 +1,21 @@
 class UsersController < ApplicationController
 
   get '/login' do
-    if !logged_in?
-      erb :'user/login'
-    else
-      # review this as I build
-      redirect '/user/show'
-    end
+    erb :'user/login'
   end
 
   post '/login' do
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect 'user/show'
+      redirect "/users/#{user.id}"
     else
-      redirect '/signup'
+      redirect '/login'
     end
+  end 
+
+  get '/users/:id' do
+    erb :'user/show'
   end
 
   get '/signup' do
