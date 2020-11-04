@@ -14,9 +14,18 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+
     <div class="wrapper">
 
-        <%= yield %>
+      <div class="nav">
+        <% if logged_in? %>
+          <a href="/">All Posts</a>
+          <a href="/">Create a Post</a>
+          <a href="/logout">Log Out</a>
+        <% end %>
+      </div>  
+
+      <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2020 <strong>Adventure Sharing Web App</strong></small>
