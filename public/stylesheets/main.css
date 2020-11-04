@@ -113,4 +113,25 @@
     line-height: 24px;
   }
 
+  /* --- Images for show page --- */
+
+  .item {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+    background-color: #FCF2EC;
+  }
+  
+  .setWidth {
+    flex-basis: 100px;
+    flex-grow: 1;
+  }
+  
+  .flex-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+  }
+
 }
