@@ -3,13 +3,19 @@
 <p><%= current_user.bio %></p>
 
 <h2>Here are your adventures:</h2>
-# add in css grid for each adventure
-<% current_user.adventures.each do |adventure| %>
-  <img src="<%= adventure.image_url %>" width="200" height="200">
-  <%= adventure.date %>
-  <%= adventure.city %>, <%= adventure.country %>
-<% end %>
+<div class="flex-container">
+  <% current_user.adventures.each do |adventure| %>
+    <div class="item setWidth"><img src="<%= adventure.image_url %>">
+    <br>
+    <%= adventure.date %>
+    <br>
+    <%= adventure.city %>, <%= adventure.country %></div>
+    <br>
+  <% end %>
+</div>
 
 <h3>Post an adventure:</h3>
-Add link to 
+*Add link to add a new adventure here*
 
+<h3>Log out:</h3>
+*Add link to log out here*
