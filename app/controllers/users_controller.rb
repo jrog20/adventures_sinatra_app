@@ -20,7 +20,22 @@ class UsersController < ApplicationController
   end
 
   get '/signup' do
-    erb :'user/signup'
+    if !logged_in?
+      erb :'user/signup'
+      # , locals: {message: "Please sign up before you sign in"}
+    else
+      redirect '/'
+    end
+  end
+
+  post '/signup' do
+    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      redirect '/signup'
+    else
+      user = User.create(params)
+      session[:user_id] = user.id
+      redirect "/users/#{user.id}"
+    end
   end
 
 end
