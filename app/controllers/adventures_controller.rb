@@ -5,4 +5,9 @@ class AdventuresController < ApplicationController
     erb :'adventures/index'
   end
 
+  get '/adventures/:id' do
+    @adventure = Adventure.all.find_by(params[:id])
+    erb :'adventures/show'
+  end
+
 end
