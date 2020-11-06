@@ -1,6 +1,5 @@
 <h1><%= @adventure.city %>, <%= @adventure.country %></h1>
-<h4><%= @adventure.date %></h4>
-
+  <h4><%= @adventure.date %></h4>
   <img src="<%= @adventure.image_url %>" alt="<%= @adventure.city %>" height="300, width="300">
   <br>
   <h3><em>Posted By: <%= @adventure.user.preferred_name %></h3></em>
@@ -10,6 +9,13 @@
   <h4>A little about <%= @adventure.user.full_name %>: </h4>
   <h4><img src="<%= @adventure.user.image_url %>" alt="<%= @adventure.user.full_name %>" height="200, width="200"</h4>
   <h4><%= @adventure.user.bio %></h4>
+  <br><br>
 
+  <a href="/adventures/<%= @adventure.id %>/edit">Edit Adventure</a>
+  <br><br>
 
+  <form method="post" action="/adventures/<%= @adventure.id %>">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete this Adventure">
+  </form>
 

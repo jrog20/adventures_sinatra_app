@@ -1,0 +1,19 @@
+<h2>Edit Adventure</h2>
+
+<form method="post" action="/adventures/<%= @adventure.id %>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  
+  <label for="city">City: </label>
+  <input type="text" name="city" value="<%= @adventure.city %>">
+  <br><br>
+  <label for="country">Country: </label>
+  <input type="text" name="country" value="<%= @adventure.country %>">
+  <br><br>
+  <label for="date">Date: </label>
+  <input type="text" name="date" value="<%= @adventure.date %>">
+  <br><br>
+  <label for="image_url">Image URL: </label>
+  <input type="text" name="image_url" value="<%= @adventure.image_url %>">
+  <br><br>
+  <input type="submit" value="Edit Adventure">
+</form>

@@ -24,4 +24,21 @@ class AdventuresController < ApplicationController
     end
   end
 
+  get '/adventures/:id/edit' do
+    @adventure = Adventure.find_by_id(params[:id])
+    erb :'adventures/edit_adventure'
+  end
+
+  patch '/adventures/:id' do
+    @adventure = Adventure.find_by_id(params[:id])
+    @adventure.update(params)
+    redirect "/adventures/#{@adventure.id}"
+  end
+
+  delete '/adventures/:id' do
+    @adventure = Adventure.find_by_id(params[:id])
+    @adventure.destroy
+    redirect '/adventures'
+  end
+
 end
