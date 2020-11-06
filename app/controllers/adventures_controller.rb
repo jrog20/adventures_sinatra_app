@@ -31,7 +31,7 @@ class AdventuresController < ApplicationController
 
   patch '/adventures/:id' do
     @adventure = Adventure.find_by_id(params[:id])
-    @adventure.update(params)
+    @adventure.update(city: params[:city], country: params[:country], date: params[:date], image_url: params[:image_url])
     redirect "/adventures/#{@adventure.id}"
   end
 
