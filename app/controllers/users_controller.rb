@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   get '/login' do
-    erb :'user/login'
+    erb :'users/login'
   end
 
   post '/login' do
@@ -16,12 +16,12 @@ class UsersController < ApplicationController
   end 
 
   get '/users/:id' do
-    erb :'user/show'
+    erb :'users/show'
   end
 
   get '/signup' do
     if !logged_in?
-      erb :'user/signup'
+      erb :'users/signup'
       # , locals: {message: "Please sign up before you sign in"}
     else
       redirect '/'
