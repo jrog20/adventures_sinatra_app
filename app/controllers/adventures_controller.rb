@@ -16,8 +16,12 @@ class AdventuresController < ApplicationController
   end
 
   get '/adventures/:id' do
-    @adventure = Adventure.all.find_by(params[:id])
-    erb :'adventures/show'
+    if logged_in?
+      @adventure = Adventure.all.find_by_id(params[:id])
+      erb :'adventures/show'
+    else
+      redirect '/login'
+    end
   end
 
 end
