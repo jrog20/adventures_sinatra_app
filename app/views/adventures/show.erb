@@ -1,9 +1,15 @@
 <h1><%= @adventure.city %>, <%= @adventure.country %></h1>
-<h3><em>Posted By: <%= @adventure.user.preferred_name %></h3></em>
+<h4><%= @adventure.date %></h4>
 
   <img src="<%= @adventure.image_url %>" alt="<%= @adventure.city %>" height="300, width="300">
   <br>
-  <h4><%= @adventure.date %></h4>
-  
+  <h3><em>Posted By: <%= @adventure.user.preferred_name %></h3></em>
   <h5><em>Posted On: <%= @adventure.created_at %></h5></em>
-  <br>
+  <br><br>
+
+  <h4>A little about <%= @adventure.user.full_name %>: </h4>
+  <h4><img src="<%= @adventure.user.image_url %>" alt="<%= @adventure.user.full_name %>" height="200, width="200"</h4>
+  <h4><%= @adventure.user.bio %></h4>
+
+
+
