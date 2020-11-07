@@ -1,8 +1,13 @@
 class AdventuresController < ApplicationController
 
   get '/adventures' do
-    @adventures = Adventure.all
-    erb :'adventures/index'
+    if logged_in?
+      @adventures = Adventure.all
+      erb :'adventures/index'
+    else
+      # flash[:error] = "Please log in"
+      redirect '/'
+    end
   end
 
   get '/adventures/new' do
@@ -18,6 +23,7 @@ class AdventuresController < ApplicationController
   get '/adventures/:id' do
     if logged_in?
       @adventure = Adventure.all.find_by_id(params[:id])
+      @adventure.user_id = current_user.id
       erb :'adventures/show'
     else
       redirect '/login'

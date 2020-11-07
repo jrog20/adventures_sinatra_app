@@ -17,6 +17,10 @@
 
     <div class="wrapper">
 
+      <% if flash[:error] %>
+        <h3 class="flash"><%= flash[:error] %></h3>
+      <% end %>
+
       <div class="nav">
         <% if logged_in? %>
           <a href="/adventures">All Adventures</a>
