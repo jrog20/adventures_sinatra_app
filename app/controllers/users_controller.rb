@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/users/#{user.id}"
     else
-      # flash[:error] = "Wrong login information."
+      flash[:error] = "Wrong login information. Please try again."
       redirect '/login'
     end
   end 
