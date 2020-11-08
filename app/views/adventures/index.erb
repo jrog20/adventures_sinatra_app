@@ -6,6 +6,6 @@
     <h4><a href="/adventures/<%= adventure.id %>"><%= adventure.city %>, <%= adventure.country %></a></h4>
     <h4><%= adventure.date %></h4>
     <h5><em>Posted By: <%= adventure.user.full_name %></h5></em>
-    <h5><em>On: <%= adventure.created_at %></h5></em>
+    <h5><em>On: <%= adventure.created_at.strftime("%A, %B %d, %Y") %></h5></em>
     <br>
   <% end %>

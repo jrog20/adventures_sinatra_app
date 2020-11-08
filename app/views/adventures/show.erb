@@ -4,7 +4,7 @@
   <br>
 
   <h3><em>Posted By: <%= @adventure.user.preferred_name %></h3></em>
-  <h5><em>Posted On: <%= @adventure.created_at %></h5></em>
+  <h5><em>Posted On: <%= @adventure.created_at.strftime("%A, %B %d, %Y") %></h5></em>
   <br><br>
 
   <h4>A little about <%= @adventure.user.full_name %>: </h4>
