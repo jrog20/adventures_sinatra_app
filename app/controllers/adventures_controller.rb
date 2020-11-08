@@ -35,22 +35,29 @@ class AdventuresController < ApplicationController
       @adventure = Adventure.all.find_by_id(params[:id])
       erb :'adventures/show'
     else
-      redirect '/login'
+      redirect '/'
     end
   end
 
   get '/adventures/:id/edit' do
     @adventure = Adventure.find_by_id(params[:id])
-    erb :'adventures/edit_adventure'
+    if logged_in? && @adventure.user_id == current_user.id
+      erb :'adventures/edit_adventure'
+    else
+      flash[:error] = "Please log in to create an adventure. You can only edit your own adventures."
+      redirect '/'
+    end
   end
 
   patch '/adventures/:id' do
+    #need to add user authentication here?
     @adventure = Adventure.find_by_id(params[:id])
     @adventure.update(city: params[:city], country: params[:country], date: params[:date], image_url: params[:image_url])
     redirect "/adventures/#{@adventure.id}"
   end
 
   delete '/adventures/:id' do
+    #need to add user authentication here
     @adventure = Adventure.find_by_id(params[:id])
     @adventure.destroy
     redirect '/adventures'

@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?
-      flash[:error] = "Please sign up before you sign in"
+      flash[:error] = "Please sign up before you log in"
       erb :'users/signup'
     else
       redirect '/'
@@ -42,9 +42,5 @@ class UsersController < ApplicationController
     session.destroy
     redirect '/'
   end
-
-  # post '/logout' do
-  #   erb :welcome 
-  # end
 
 end
