@@ -14,11 +14,11 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    # if logged_in?
-    #   redirect "/users/#{current_user.id}"
-    # else
+    if logged_in?
+      redirect "/users/#{current_user.id}"
+    else
       erb :welcome
-    # end
+    end
   end
 
   helpers do
@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
     end
   
     def current_user
-      User.find_by(session[:user_id])
+      User.find_by(id: session[:user_id])
     end
 
   end

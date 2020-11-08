@@ -39,16 +39,12 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    if logged_in?
-      session.destroy
-      redirect '/login'
-    else
-      redirect '/'
-    end
+    session.destroy
+    redirect '/'
   end
 
-  post '/logout' do
-    erb :welcome 
-  end
+  # post '/logout' do
+  #   erb :welcome 
+  # end
 
 end
