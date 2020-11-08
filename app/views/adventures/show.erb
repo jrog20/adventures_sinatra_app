@@ -12,11 +12,13 @@
   <h4><%= @adventure.user.bio %></h4>
   <br><br>
 
-  <a href="/adventures/<%= @adventure.id %>/edit">Edit Adventure</a>
-  <br><br>
+  <% if authorized?(@adventure) %>
+    <a href="/adventures/<%= @adventure.id %>/edit">Edit Adventure</a>
+    <br><br>
 
-  <form method="post" action="/adventures/<%= @adventure.id %>">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete this Adventure">
-  </form>
+    <form method="post" action="/adventures/<%= @adventure.id %>">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete this Adventure">
+    </form>
+  <% end %>
 

@@ -31,6 +31,10 @@ class ApplicationController < Sinatra::Base
       User.find_by(id: session[:user_id])
     end
 
+    def authorized?(adventure)
+      adventure.user == current_user
+    end
+
   end
 
 end

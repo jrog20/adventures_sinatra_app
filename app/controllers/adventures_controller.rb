@@ -41,10 +41,10 @@ class AdventuresController < ApplicationController
 
   get '/adventures/:id/edit' do
     @adventure = Adventure.find_by_id(params[:id])
-    if logged_in? && @adventure.user_id == current_user.id
+    if authorized?(@adventure)
       erb :'adventures/edit_adventure'
     else
-      flash[:error] = "You must be logged in to create, edit, or delete your adventures. You can only edit or delete your own adventures."
+      flash[:error] = "You can only edit your own adventures."
       redirect '/'
     end
   end
@@ -57,11 +57,11 @@ class AdventuresController < ApplicationController
 
   delete '/adventures/:id' do
     @adventure = Adventure.find_by_id(params[:id])
-    if logged_in? && @adventure.user_id == current_user.id
+    if authorized?(@adventure)
       @adventure.destroy
       redirect '/adventures'
     else
-      flash[:error] = "You must be logged in to create, edit, or delete your adventures. You can only edit or delete your own adventures."
+      flash[:error] = "You can only delete your own adventures."
       redirect '/'
     end
   end
