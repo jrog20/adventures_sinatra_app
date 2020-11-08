@@ -3,13 +3,13 @@
 <p><%= current_user.bio %></p>
 
 <h2>Here are your adventures:</h2>
-<div class="flex-container">
+
   <% current_user.adventures.each do |adventure| %>
-    <div class="item setWidth"><img src="<%= adventure.image_url %>">
+    <img src="<%= adventure.image_url %>">
     <br>
     <%= adventure.date %>
     <br>
-    <%= adventure.city %>, <%= adventure.country %></div>
-    <br>
+    <%= adventure.city %>, <%= adventure.country %>
+    <br><br>
   <% end %>
-</div>
+
