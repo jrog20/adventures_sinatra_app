@@ -11,7 +11,12 @@ class AdventuresController < ApplicationController
   end
 
   get '/adventures/new' do
-    erb :'adventures/new'
+    if logged_in?
+      erb :'adventures/new'
+    else
+      flash[:error] = "Please log in to create an adventure."
+      redirect '/'
+    end
   end
 
   post '/adventures' do
