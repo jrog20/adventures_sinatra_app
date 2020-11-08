@@ -17,8 +17,12 @@ class AdventuresController < ApplicationController
   post '/adventures' do
     adventure = Adventure.create(params)
     adventure.user_id = current_user.id
-    adventure.save
-    redirect "/adventures/#{adventure.id}"
+    if adventure.save
+      redirect "/adventures/#{adventure.id}"
+    else
+      flash[:error] = "Please fill out all fields to create an Adventure."
+      redirect '/adventures/new'
+    end
   end
 
   get '/adventures/:id' do
