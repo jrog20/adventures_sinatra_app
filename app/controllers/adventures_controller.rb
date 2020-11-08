@@ -17,6 +17,7 @@ class AdventuresController < ApplicationController
   post '/adventures' do
     adventure = Adventure.create(params)
     adventure.user_id = current_user.id
+    adventure.save
     redirect "/adventures/#{adventure.id}"
   end
 

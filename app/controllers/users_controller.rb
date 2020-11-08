@@ -21,8 +21,8 @@ class UsersController < ApplicationController
 
   get '/signup' do
     if !logged_in?
+      flash[:error] = "Please sign up before you sign in"
       erb :'users/signup'
-      # , locals: {message: "Please sign up before you sign in"}
     else
       redirect '/'
     end
