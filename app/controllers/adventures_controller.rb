@@ -20,7 +20,7 @@ class AdventuresController < ApplicationController
     if adventure.save
       redirect "/adventures/#{adventure.id}"
     else
-      flash[:error] = "Please fill out all fields to create an Adventure."
+      flash[:error] = "Please fill out all fields: #{adventure.errors.full_messages.to_sentence}."
       redirect '/adventures/new'
     end
   end
