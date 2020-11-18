@@ -20,8 +20,7 @@ class AdventuresController < ApplicationController
   end
 
   post '/adventures' do
-    adventure = Adventure.create(params)
-    adventure.user_id = current_user.id
+    adventure = current_user.adventures.build(params)
     if adventure.save
       redirect "/adventures/#{adventure.id}"
     else
